@@ -1,0 +1,23 @@
+/* Hiệu ứng lớp nền đa tầng */
+.glass-layer {
+  background: rgba(20, 20, 25, 0.7);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Tab trong tab - Thanh cuộn siêu mảnh cho mobile */
+::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.5);
+  border-radius: 10px;
+}
+
+/* Menu trong menu: Hiệu ứng nổi khối */
+.nested-menu {
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  transform: translateZ(10px);
+}
