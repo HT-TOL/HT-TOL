@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Nexus AI Chat</title>
+<style>
+body{
+  background:#05070b;
+  color:#00ff9c;
+  font-family:monospace;
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  height:100vh;
+}
+
+.header{
+  padding:15px;
+  border-bottom:1px solid #00ff9c33;
+  font-size:22px;
+}
+
+.chat{
+  flex:1;
+  overflow-y:auto;
+  padding:10px;
+}
+
+.inputBox{
+  display:flex;
+  border-top:1px solid #00ff9c33;
+}
+
+input{
+  flex:1;
+  background:black;
+  color:#00ff9c;
+  border:none;
+  padding:15px;
+  font-size:16px;
+}
+
+button{
+  width:100px;
+  background:#00ff9c;
+  border:none;
+}
+</style>
+</head>
+<body>
+
+<div class="header">NEXUS AI CHAT</div>
+
+<div id="chat" class="chat"></div>
+
+<div class="inputBox">
+<input id="msg" placeholder="nha:-p tin nha:/n...">
+<button onclick="send()">SEND</button>
+</div>
+
+<script>
+async function send(){
+  const msg = document.getElementById("msg").value
+  if(!msg) return
+
+  const chat = document.getElementById("chat")
+  chat.innerHTML += "<div>YOU: "+msg+"</div>"
+
+  try{
+    const res = await fetch("http://localhost:5000/chat",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify({msg})
+    })
+
+    const data = await res.json()
+    chat.innerHTML += "<div>AI: "+data.reply+"</div>"
+  }catch{
+    chat.innerHTML += "<div>AI: la;  }
+
+  document.getElementById("msg").value=""
+}
+</script>
+
+</body>
+</html>
