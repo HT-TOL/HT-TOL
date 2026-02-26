@@ -1,0 +1,34 @@
+{
+  "name": "root",
+  "version": "1.0.0",
+  "description": "Mô tả: Đây là dự án React đơn giản. 1. Cài đặt các dependencies: `npm install` 2. Chạy ứng dụng: `npm start` # ai-projects-dashboard # ai-projects-dashboard # Ai-agent-studio # ai-web-designer",
+  "main": "server.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cclive-com/ai-projects-dashboard.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cclive-com/ai-projects-dashboard/issues"
+  },
+  "homepage": "https://github.com/cclive-com/ai-projects-dashboard#readme",
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
+    "ws": "^8.19.0",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {}
+}

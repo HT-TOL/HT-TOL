@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CMD SERVER</title>
+<style>
+body{
+background:#000;
+color:#00ff9c;
+font-family:monospace;
+margin:0;
+}
+
+.header{
+padding:20px;
+font-size:28px;
+border-bottom:1px solid #333;
+}
+
+.status{
+padding:10px 20px;
+color:#00ff9c;
+}
+
+.terminal{
+padding:20px;
+height:60vh;
+overflow:auto;
+}
+
+.inputbox{
+display:flex;
+padding:15px;
+border-top:1px solid #333;
+}
+
+input{
+flex:1;
+background:#000;
+border:2px solid #00ff9c;
+color:#00ff9c;
+font-size:18px;
+padding:10px;
+outline:none;
+}
+
+button{
+background:#00ff9c;
+border:none;
+padding:10px 20px;
+margin-left:10px;
+font-weight:bold;
+}
+
+.rgb{
+position:fixed;
+bottom:0;
+width:100%;
+height:5px;
+background:linear-gradient(
+90deg,
+red,orange,yellow,green,cyan,blue,purple,red
+);
+animation:move 3s linear infinite;
+}
+
+@keyframes move{
+0%{background-position:0%}
+100%{background-position:200%}
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">CMD SERVER v3.0</div>
+<div class="status">● ONLINE | localhost</div>
+
+<div id="out" class="terminal"></div>
+
+<div class="inputbox">
+<input id="cmd" placeholder="nhập lệnh">
+<button onclick="run()">RUN</button>
+</div>
+
+<div class="rgb"></div>
+
+<script>
+async function run(){
+const cmd=document.getElementById("cmd").value
+const r=await fetch("/run",{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({cmd})
+})
+const data=await r.json()
+document.getElementById("out").textContent+=
+"> "+cmd+"\\n"+data.output+"\\n"
+}
+</script>
+
+</body>
+</html>
